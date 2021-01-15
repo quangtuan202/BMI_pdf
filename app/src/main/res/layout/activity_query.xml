@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/print_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Print date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/print_date" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Age"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age" />
+
+    <TextView
+        android:id="@+id/current_bmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Current BMI"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height" />
+
+    <TextView
+        android:id="@+id/target_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Target Weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_bmi" />
+
+    <TextView
+        android:id="@+id/target_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Target Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/target_weight" />
+
+    <TextView
+        android:background="@drawable/border"
+        android:id="@+id/no_col"
+        android:layout_width="55dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="No"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <TextView
+        android:background="@drawable/border"
+        android:id="@+id/change_col"
+        android:layout_width="55dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Change"
+        app:layout_constraintStart_toEndOf="@id/no_col"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <TextView
+
+        android:background="@drawable/border"
+        android:id="@+id/weight_col"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:textAlignment="center"
+        android:layout_width="55dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/change_col"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <TextView
+
+        android:background="@drawable/border"
+        android:id="@+id/date_col"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textAlignment="center"
+        android:layout_width="55dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/weight_col"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <TextView
+        android:background="@drawable/border"
+        android:id="@+id/bmi_col"
+        android:layout_height="wrap_content"
+        android:text="BMI"
+        android:textAlignment="center"
+        android:layout_width="55dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/date_col"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <TextView
+        android:background="@drawable/border"
+        android:id="@+id/note_col"
+        android:layout_height="wrap_content"
+        android:text="Notes"
+        android:textAlignment="center"
+        android:layout_width="55dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/bmi_col"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <TextView
+        android:background="@drawable/border"
+        android:id="@+id/pic_col"
+        android:layout_height="wrap_content"
+        android:text="Picture"
+        android:textAlignment="center"
+        android:layout_width="55dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/note_col"
+        app:layout_constraintTop_toBottomOf="@+id/target_date" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pdf_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/export_to_pdf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_col" />
+
+    <Button
+        android:id="@+id/export_to_pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="32dp"
+        android:text="Export"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pdf_recycler_view"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_pdf_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Pdf"
+        app:layout_constraintStart_toEndOf="@+id/export_to_pdf"
+        app:layout_constraintTop_toBottomOf="@+id/pdf_recycler_view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

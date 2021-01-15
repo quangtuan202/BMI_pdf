@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/no_value"
+            android:layout_width="55dp"
+            android:layout_height="20dp"
+            android:background="@drawable/border"
+            android:text="no_val"
+            android:textAlignment="center"
+       />
+
+        <TextView
+            android:id="@+id/change_value"
+            android:text="no_val"
+            android:background="@drawable/border"
+            android:layout_height="20dp"
+            android:layout_width="55dp"
+            android:textAlignment="center"
+        />
+
+        <TextView
+            android:id="@+id/weight_value"
+            android:text="weight"
+            android:background="@drawable/border"
+            android:layout_height="20dp"
+            android:layout_width="55dp"
+            android:textAlignment="center"
+         />
+
+        <TextView
+            android:id="@+id/date_value"
+            android:text="date"
+            android:background="@drawable/border"
+            android:layout_height="20dp"
+            android:layout_width="55dp"
+            android:textAlignment="center"
+          />
+
+        <TextView
+            android:id="@+id/bmi_value"
+            android:text="bmi"
+            android:background="@drawable/border"
+            android:layout_height="20dp"
+            android:layout_width="55dp"
+            android:textAlignment="center"
+         />
+
+        <TextView
+            android:id="@+id/note_value"
+            android:text="note"
+            android:background="@drawable/border"
+            android:layout_height="20dp"
+            android:layout_width="55dp"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/picture_value"
+            android:text="picture"
+            android:background="@drawable/border"
+            android:layout_height="20dp"
+            android:layout_width="55dp"
+            android:textAlignment="center"
+          />
+
+</LinearLayout>
