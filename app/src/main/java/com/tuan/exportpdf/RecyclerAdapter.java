@@ -59,6 +59,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         viewHolder.txt_bmi.setText(String.valueOf(data.getBmi()));
         viewHolder.txt_note.setText(data.getNote());
         viewHolder.txt_picture.setText(data.getPicture());
+        //viewHolder.txt_picture.setText("00");
     }
 
 

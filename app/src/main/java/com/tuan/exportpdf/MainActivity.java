@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         EditText edt_picture=findViewById(R.id.picture);
         Button save_btn=findViewById(R.id.save);
         Button query_btn=findViewById(R.id.query);
+        Button create_db_btn=findViewById(R.id.create_db);
 
         save_btn.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -66,6 +67,28 @@ public class MainActivity extends AppCompatActivity {
              Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
          }
      });
+
+        create_db_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                for(int i=0;i<100;i++) {
+                    model data = new model();
+                    data.setName(String.valueOf(i));
+                    data.setAge(i);
+                    data.setHeight(i);
+                    data.setWeight(i);
+                    data.setBmi(i);
+                    data.setNote(String.valueOf(i));
+                    data.setPicture(String.valueOf(i));
+                    Date date = new Date();
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    String strDate = formatter.format(date);
+                    data.setDate(date);
+                    roomDB.modelDao().insertData(data);
+                    Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         query_btn.setOnClickListener(new View.OnClickListener(){
             @Override

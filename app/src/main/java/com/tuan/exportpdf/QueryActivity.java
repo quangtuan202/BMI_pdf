@@ -209,7 +209,7 @@ public class QueryActivity extends AppCompatActivity {
                 canvas.drawText("Note",340,240,myPaint);
 
                 // Draw lines and data
-                for(int i=0;i<dataList.size();i++){
+                for(int i=0;i<10;i++){ // first page 10 rows only
                     int margin =250;
                     myPaint.setTextAlign(Paint.Align.LEFT);
                     myPaint.setTextSize(10.0f);
@@ -254,8 +254,145 @@ public class QueryActivity extends AppCompatActivity {
                     canvas.drawText(String.valueOf(dataList.get(i).getNote()),340,margin-10+(i+1)*30,myPaint);
 
                 }
-
                 myPdfDocument.finishPage(myPage1);
+
+                // Count number of pages from 2nd page and print
+                int numberOfPages;
+                if((dataList.size()-10)<0){
+                    numberOfPages=0;
+                }
+                else if((dataList.size()-10)%15>0){
+                    numberOfPages=(dataList.size()-10)/15+1;
+                }
+                else {
+                    numberOfPages= (dataList.size()-10)/15;
+                }
+
+                // Start printing from second page
+                if (numberOfPages==0){ // if data size <10, create no more page
+                    return;
+                }
+                else{
+                    for(int i=0;i<numberOfPages;i++) {
+                        // Create attributes for each page
+                        PdfDocument.PageInfo myPageAfterFirstInfo = new PdfDocument.PageInfo.Builder(400, 600, i + 2).create();
+                        PdfDocument.Page myPageAfterFirst = myPdfDocument.startPage(myPageAfterFirstInfo);
+                        Canvas canvasAfterFirst = myPageAfterFirst.getCanvas();
+
+                        //Create content for each page
+                        //for (int k = 1; k < numberOfPages + 1; k++) {
+                            // Create table header : first line
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setStrokeWidth(1.5f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawLine(16, 20, myPageAfterFirstInfo.getPageWidth() - 16, 20, myPaint);
+
+                            // Create table header : second line
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setStrokeWidth(1.5f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawLine(16, 50, myPageAfterFirstInfo.getPageWidth() - 16, 50, myPaint);
+
+                            // Create table header : No
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawText("No", 22, 40, myPaint);
+
+                            // Create table header : Change
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawText("Change", 60, 40, myPaint);
+
+                            // Create table header : Weight
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawText("Weight", 120, 40, myPaint);
+
+                            // Create table header : Date
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawText("Date", 190, 40, myPaint);
+
+                            // Create table header : BMI
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawText("BMI", 280, 40, myPaint);
+
+                            // Create table header : Note
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setTextSize(10.0f);
+                            myPaint.setFakeBoldText(true);
+                            canvasAfterFirst.drawText("Note", 340, 40, myPaint);
+
+                            // Draw lines and data
+                            for (int j = i*15+10; j < i*15+25; j++) {
+                                if(j<dataList.size()) {
+                                    int margin = 50;
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setStrokeWidth(1.5f);
+                                    myPaint.setFakeBoldText(true);
+                                    canvasAfterFirst.drawLine(16, margin + CountValue.getCount() * 30, myPageAfterFirstInfo.getPageWidth() - 16, margin + CountValue.getCount() * 30, myPaint);
+
+                                    // No
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setFakeBoldText(false);
+                                    canvasAfterFirst.drawText(String.valueOf(dataList.get(j).getId()), 22, margin - 10 + CountValue.getCount() * 30, myPaint);
+
+                                    // Change
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setFakeBoldText(false);
+                                    canvasAfterFirst.drawText("None", 60, margin - 10 + CountValue.getCount() * 30, myPaint);
+
+                                    // Weight
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setFakeBoldText(false);
+                                    canvasAfterFirst.drawText(String.valueOf(dataList.get(j).getWeight()), 120, margin - 10 + CountValue.getCount() * 30, myPaint);
+
+                                    // Date
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setFakeBoldText(false);
+                                    canvasAfterFirst.drawText(String.valueOf(formatter.format(dataList.get(j).getDate())), 190, margin - 10 + CountValue.getCount() * 30, myPaint);
+
+                                    // BMI
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setFakeBoldText(false);
+                                    canvasAfterFirst.drawText(String.valueOf(dataList.get(j).getBmi()), 280, margin - 10 + CountValue.getCount() * 30, myPaint);
+
+                                    // Note
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setTextSize(10.0f);
+                                    myPaint.setFakeBoldText(false);
+                                    canvasAfterFirst.drawText(String.valueOf(dataList.get(j).getNote()), 340, margin - 10 + CountValue.getCount() * 30, myPaint);
+                                    Log.d("J=", String.valueOf(j));
+                                    Log.d("Count", String.valueOf(CountValue.getCount()));
+                                    if (CountValue.getCount() == 15) {
+                                        CountValue.resetCount();
+                                    }
+                                    CountValue.increase();
+
+                                }
+
+
+                            }
+                            myPdfDocument.finishPage(myPageAfterFirst);
+                        //}
+                    }
+                }
+
+
                 File file = new File(getExternalFilesDir(null),"/Hello2.pdf");
                 try{
                     myPdfDocument.writeTo(new FileOutputStream(file));
@@ -263,6 +400,8 @@ public class QueryActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 myPdfDocument.close();
+
+                Toast.makeText(QueryActivity.this, "Saved", Toast.LENGTH_SHORT).show();
 
 
             }
