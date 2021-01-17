@@ -1,15 +1,20 @@
 package com.tuan.exportpdf;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class QueryActivity extends AppCompatActivity {
@@ -37,6 +43,7 @@ public class QueryActivity extends AppCompatActivity {
     private RecyclerAdapter recyclerAdapter;
     Button btn_export_to_pdf;
     Button btn_pdf_new;
+    Button btn_open;
     Bitmap bmp, scaledBitmap;
 
     @Override
@@ -49,6 +56,7 @@ public class QueryActivity extends AppCompatActivity {
         }
         btn_export_to_pdf=findViewById(R.id.export_to_pdf);
         btn_pdf_new=findViewById(R.id.btn_pdf_new);
+        btn_open=findViewById(R.id.btn_open);
         recyclerView = findViewById(R.id.pdf_recycler_view);
         recyclerAdapter=new RecyclerAdapter(this,dataList);
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(getApplicationContext());
@@ -126,7 +134,7 @@ public class QueryActivity extends AppCompatActivity {
                 PdfDocument.Page myPage1=myPdfDocument.startPage(myPageInfo1);
                 Canvas canvas=myPage1.getCanvas();
 
-                java.util.Date date=new java.util.Date();
+                Date date=new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 String strDate= formatter.format(date);
 
@@ -392,8 +400,12 @@ public class QueryActivity extends AppCompatActivity {
                     }
                 }
 
+                String path= String.valueOf(getExternalFilesDir(null));
+                //Date date = new Date() ;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
+                String fileName="BMI_Report"+dateFormat.format(date)+".pdf";
+                File file = new File(getExternalFilesDir(null),fileName);
 
-                File file = new File(getExternalFilesDir(null),"/Hello2.pdf");
                 try{
                     myPdfDocument.writeTo(new FileOutputStream(file));
                 } catch (IOException e){
@@ -401,13 +413,24 @@ public class QueryActivity extends AppCompatActivity {
                 }
                 myPdfDocument.close();
 
-                Toast.makeText(QueryActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(QueryActivity.this, path, Toast.LENGTH_SHORT).show();
 
             }
 
+
         });
 
+
+
+        btn_open.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+
+
+
+            }
+        });
     }
 
 }
