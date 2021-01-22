@@ -399,7 +399,7 @@ public class QueryActivity extends AppCompatActivity {
                         //}
                     }
                 }
-
+                Log.d("H","true final");
                 String path= String.valueOf(getExternalFilesDir(null));
                 //Date date = new Date() ;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
